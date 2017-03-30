@@ -1,8 +1,8 @@
 grammar shell;
 
-line:  command ('|' command)*;
+line:  command (WS '|' WS command)*;
 
-command: program argument* flag*;
+command: program (WS argument)* (WS flag)*;
 
 program: LETTERS;
 argument: '-' LETTERS ;
@@ -11,3 +11,4 @@ flag: (LETTERS | OTHER)+;
 
 LETTERS: [a-zA-Z0-9]+;
 OTHER: '.' | '(' | ')' | '"';
+WS: ' '+;
